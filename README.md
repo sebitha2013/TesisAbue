@@ -1,2 +1,0 @@
-# TesisAbue
-Tesis de Juegos
