@@ -1,6 +1,6 @@
 <?php
-require_once("CONEXION/db.php")
-require_once("CONTROLADOR/estadisticaJuego.controlador.php");
+require_once('CONEXION/db.php')
+require_once('CONTROLADOR/estadisticaJuego.controlador.php');
 ?>
 
 <!DOCTYPE html>
