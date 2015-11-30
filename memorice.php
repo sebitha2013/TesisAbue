@@ -2,12 +2,12 @@
 <head>
 	<title>Memorice</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script src="JS/jquery-1.11.1.js"></script>
 	<script src="Bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="JS/Memorice.js"></script>
-	
+
 	<style type="text/css">
 		body{
 			padding-top: 2%;
@@ -81,11 +81,11 @@
 					  	<button id="Iniciar" class="btn btn-primary btn-lg" onclick="iniciar();" value="1">Iniciar</button>
 					  	<button id="Salir" onclick="exit" class="btn btn-danger btn-lg">Salir</button>
 					  </div>
-					  
+
 			</div>
 		</div>
 		<div class="row" id="Juego">
-		
+
 			<div class="col-sm-8 col-md-8 " id="tabla">
 					<div class="visible-xs">
 						<h2>Memorice</h2>
@@ -108,7 +108,7 @@
 				      	</div>
 				    </div>
 				    <br>
-				    <div class="row">     	
+				    <div class="row">
 				      	<div class="col-md-12 col-lg-6">
 				      		<label>Nuemro de Intentos</label><input class="form-control" id="intentos" type="text" value="0" disabled>
 				      	</div>
@@ -117,9 +117,9 @@
 				      		<label>Aciertos</label><input class="form-control" id="disabledInput" type="text" value="100" disabled>
 				      	</div>
 					</div>
-					
+
 					<br>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<button id="IniciarOtra" class="btn btn-primary btn-lg btn-block"  onclick="iniciar();">Intentar de Nuevo</button>
@@ -127,16 +127,16 @@
 					</div>
 
 						<br>
-					
+
 					<div class="row">
 						<div class="col-md-12">
 							<button id="Volver" class="btn btn-danger btn-lg btn-block" onclick="Volver();" value="cancel">Volver</button>
 						</div>
 					</div>
-	
-			</div>	
+
+			</div>
 		</div>
-		
+
 		<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -157,9 +157,9 @@
 	</div>
 	</div>
 
-	<!-- MISAEL ESTO ES UNA PRUEBA -->
 	
-		
-	
+
+
+
 </body>
 </html>

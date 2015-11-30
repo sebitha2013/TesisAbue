@@ -1,6 +1,6 @@
 <?php
-
-
+require_once("CONEXION/db.php")
+require_once("CONTROLADOR/estadisticaJuego.controlador.php");
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
 
     window.onload = function(){ //Cuando Carga la pagina, es lo primero que hace
 
-        
+
         $("#procesar_button").hide();
         $("#span_img_alert").hide();
         $("#memorise").hide();
@@ -44,7 +44,7 @@
         memorise = document.getElementById("memorise");
         var Puntaje = parseInt(document.getElementById('puntaje').innerHTML);
         var Numero_random;
-        
+
 
         if(Puntaje < 3){ // Dependiendo del puntaje le brinda un número al azar
             document.getElementById('nivel_juego').innerHTML = 1;
@@ -80,14 +80,14 @@
                 }
             }
         }
-        
 
-        memorise.innerHTML = Numero_random; // 
 
-        
+        memorise.innerHTML = Numero_random; //
+
+
 
         contador_s = 0;
-        
+
         var cronometro = setInterval(
 
             function(){
@@ -101,7 +101,7 @@
                     document.getElementById('memorise').style.display = 'none'; // escondemos el memorise.
                     $("#procesar_button").show(); //  mostramos el boton de procesar.
                     $("#Memorise_juego").show();
-                    $("#memorise_usuario").focus();                  
+                    $("#memorise_usuario").focus();
                 }
 
                 }
@@ -113,18 +113,18 @@
 
      });
 
-$(function(){ 
+$(function(){
 
     $("#memorise_usuario").keyup(function (e) {
 
     if (e.which == 13) {
 
       if(!$('#span_img_alert').is(":visible")){
-        
+
             procesarJuego();
-        
+
         }
-    
+
     }
 
  });
@@ -136,18 +136,18 @@ $(function(){
         return Math.floor(Math.random() * (max - min)) + min;
 
     }
-   
+
     function procesarJuego(){
-       
+
 
     	$("#iniciar_button").show();
     	document.getElementById('procesar_button').style.display = 'none';
     	memorise = document.getElementById('memorise').innerHTML;
     	memorise_usuario = document.getElementById('memorise_usuario').value;
-    	
+
 
     	if(memorise_usuario == memorise){
-            
+
             $("#span_img_alert").removeClass("alert-success alert-danger").addClass("alert-success");
             $("#img_alert").removeClass("glyphicon-remove glyphicon-ok").addClass("glyphicon-ok");
             $("#span_img_alert").show();
@@ -170,55 +170,41 @@ $(function(){
                 processData:false,
                 cache:false
 
-            
-                }).done(function(response) { 
+
+                }).done(function(response) {
 
 
-                }); 
-                		
+                });
+
     	}else{
-            
+
     		document.getElementById('fracasos').innerHTML = parseInt(document.getElementById('fracasos').innerHTML) + 1;
             $("#span_img_alert").removeClass("alert-success alert-danger").addClass("alert-danger");
             $("#img_alert").removeClass("glyphicon-remove glyphicon-ok").addClass("glyphicon-remove");
             $("#span_img_alert").show();
             $("#memorise_usuario").prop('readonly', true);
     	}
-
-        
-
-
-
-
-    		
-
     }
 
-    
- 
     </script>
-
-
-
 </head>
 
 <body>
     <div class="container">
-
         <br />
         <br />
     <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 
 		<div id="juego" class="panel panel-primary text-center">
-         <div class="panel-heading"> <h2> Memoricé </h2> </div>       
-                
+         <div class="panel-heading"> <h2> Memoricé </h2> </div>
+
         <div class="panel-body">
                	            <div class="row">
-                
+
                 <h1 id="memorise" class="bg-primary"> </h1>
                 </div>
-                
-		
+
+
 
            <br />
 
@@ -230,10 +216,10 @@ $(function(){
                 <span class="input-group-addon" id="span_img_alert"> <div id="img_alert" class="glyphicon"> </div> </span>
 
 		    </div>
-             
-	
 
-        
+
+
+
 
         <br />
 
@@ -241,7 +227,7 @@ $(function(){
 
                 <input type="button" onclick="iniciarJuego()" value="Iniciar" id="iniciar_button" class="btn btn-primary btn-lg" />
             </div>
-            
+
 
 	       <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
 
@@ -252,27 +238,29 @@ $(function(){
         </div> <!--cerramos el panel-body -->
         </div> <!-- Cierra el Juego -->
         <br />
+<?php
+				foreach (obtener_estadisticaJuego('18216571-9', 1) as $estadistica) {
+?>
+
 
         <div id="panel_puntaje" class="panel panel-primary text-center">
             <div class="panel-heading"> <h2> Tabla Puntaje </h2> </div>
 
             <div class="panel-body">
-                <label> Nivel: </label> <label id="nivel_juego"> 0 </label>
+                <label> Nivel: </label> <label id="nivel_juego"> <?php echo $estadistica('nivel_actual_est'); ?> </label>
                 <br />
-                <label> Aciertos: </label> <label id="puntaje"> 0 </label>
+                <label> Aciertos: </label> <label id="puntaje"> <?php echo $estadistica('acierto_est'); ?></label>
                 <br />
-                <label> Fracasos: </label> <label id="fracasos"> 0 </label>
-                
+                <label> Fracasos: </label> <label id="fracasos"> <?php echo $estadistica('fracaso_est'); ?> </label>
+
             </div>
         </div>
-        
+<?php
+};
+?>
         </div> <!-- Cierra el porte -->
     </div> <!-- cierra el Container para bootstrap -->
 
 </body>
 
 </html>
-
-
-
-
